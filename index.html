@@ -17,7 +17,7 @@
 
     <div id="appContent">
         <header class="bg-white p-6 text-center shadow-2xl rounded-b-[3rem] border-b-8 border-yellow-500">
-            <img src="./WhatsApp Image 2026-02-02 at 6.53.15 PM.jpeg" alt="MAXI COMIDAS" class="w-32 h-32 mx-auto mb-2 rounded-full border-2 border-black object-cover">
+            <img src="WhatsApp Image 2026-02-02 at 6.53.15 PM.jpeg" alt="MAXI COMIDAS" class="w-32 h-32 mx-auto mb-2 rounded-full border-2 border-black object-cover">
             <h1 class="text-4xl font-black text-black italic uppercase">MAXI COMIDAS</h1>
             <p class="text-xs font-bold text-gray-500 uppercase italic">📍 Pedidos: 3205901068</p>
         </header>
@@ -25,7 +25,7 @@
         <main class="p-4 space-y-6 mt-4">
             
             <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 flex flex-col card-shadow">
-                <img src="./hamburguesa-sencilla.jpg" class="w-full h-64 object-cover" onerror="this.src='https://via.placeholder.com/400?text=Error+en+Imagen'">
+                <img src="hamburguesa-sencilla.jpg" class="w-full h-64 object-cover">
                 <div class="p-5">
                     <h3 class="text-2xl font-black uppercase italic text-white">Sencilla</h3>
                     <p class="text-sm text-gray-400 mt-1 leading-relaxed">Pan, carne artesanal, queso, tocineta, ripio de papa, ensalada dulce, tomate, lechuga.</p>
@@ -37,7 +37,7 @@
             </div>
 
             <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 flex flex-col card-shadow">
-                <img src="./arepa-burguer.jpg" class="w-full h-64 object-cover" onerror="this.src='https://via.placeholder.com/400?text=Error+en+Imagen'">
+                <img src="arepa-burger.jpg" class="w-full h-64 object-cover">
                 <div class="p-5">
                     <h3 class="text-2xl font-black uppercase italic text-white">Arepa Burger</h3>
                     <p class="text-sm text-gray-400 mt-1 leading-relaxed">Arepa, carne artesanal, queso, tocineta, ripio de papa, ensalada dulce, tomate lechuga.</p>
@@ -49,7 +49,7 @@
             </div>
 
             <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 flex flex-col card-shadow">
-                <img src="./hamburguesa-especial.jpg" class="w-full h-64 object-cover" onerror="this.src='https://via.placeholder.com/400?text=Error+en+Imagen'">
+                <img src="hamburguesa-especial.jpg" class="w-full h-64 object-cover">
                 <div class="p-5">
                     <h3 class="text-2xl font-black uppercase italic text-white">Especial</h3>
                     <p class="text-sm text-gray-400 mt-1 leading-relaxed">Pan, carne artesanal, doble queso, doble tocineta, ensalada dulce, papas a la francesa, o criollas.</p>
@@ -61,7 +61,7 @@
             </div>
 
             <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 flex flex-col card-shadow">
-                <img src="./hamburguesa-doble-carne.jpg" class="w-full h-64 object-cover" onerror="this.src='https://via.placeholder.com/400?text=Error+en+Imagen'">
+                <img src="hamburguesa-doble-carne.jpg" class="w-full h-64 object-cover">
                 <div class="p-5">
                     <h3 class="text-2xl font-black uppercase italic text-white">Doble Carne</h3>
                     <p class="text-sm text-gray-400 mt-1 leading-relaxed">Pan, doble carne artesanal, doble queso, doble tocineta, ripio de papas, ensalada dulce, tomate, lechuga, papas francesas o criollas.</p>
@@ -73,11 +73,171 @@
             </div>
         </main>
 
+        <section class="p-6 bg-maxi-yellow m-4 rounded-[2.5rem] text-black shadow-xl">
+            <h2 class="font-black text-2xl mb-4 uppercase italic text-center">Datos del Pedido</h2>
+            <div class="space-y-3">
+                <input type="text" id="cliente" placeholder="Nombre completo" class="w-full p-4 rounded-2xl border-none font-bold shadow-inner">
+                <input type="tel" id="celular" placeholder="Tu número WhatsApp" class="w-full p-4 rounded-2xl border-none font-bold shadow-inner">
+                <input type="text" id="direccion" placeholder="Dirección exacta de entrega" class="w-full p-4 rounded-2xl border-none font-bold text-red-700 shadow-inner">
+                <textarea id="notas" placeholder="Observaciones (Ej: Sin cebolla, extra salsa)" class="w-full p-4 rounded-2xl border-none font-bold text-sm h-24 shadow-inner"></textarea>
+                <button onclick="mostrarResumen()" class="w-full bg-black text-white font-black p-5 rounded-2xl shadow-lg hover:bg-zinc-800 transition text-xl uppercase italic">
+                    🛒 Revisar mi Pedido
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <div id="resumenModal" class="fixed inset-0 bg-black/95 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-zinc-900 w-full max-w-sm rounded-[2.5rem] p-8 border-2 border-yellow-500 shadow-2xl text-center">
+            <h2 class="text-yellow-500 font-black text-2xl uppercase italic mb-4">Resumen de Pedido</h2>
+            <div id="resumenContenido" class="text-white text-left text-sm space-y-2 mb-6 border-y border-zinc-800 py-4 max-h-60 overflow-y-auto"></div>
+            <div class="flex flex-col gap-3">
+                <button onclick="confirmarYEnviar()" class="bg-green-600 text-white font-black p-5 rounded-2xl shadow-lg uppercase italic">✅ Enviar por WhatsApp</button>
+                <button onclick="cerrarResumen()" class="text-gray-500 text-xs font-bold py-2 uppercase tracking-widest">❌ Editar Pedido</button>
+            </div>
         </div>
+    </div>
+
+    <section id="adminPanel" class="hidden p-6 bg-zinc-900 border-t-4 border-yellow-500 m-4 rounded-3xl">
+        <h2 class="font-black text-yellow-500 mb-4 text-center uppercase">Ventas Locales</h2>
+        <div class="flex gap-2 mb-4">
+            <button onclick="exportarExcel()" class="bg-blue-600 flex-1 p-3 rounded-xl font-bold text-[10px] uppercase">📥 Excel</button>
+        </div>
+        <div id="listaPedidos" class="space-y-3 max-h-96 overflow-y-auto"></div>
+    </section>
+
+    <nav class="fixed bottom-0 w-full bg-white p-4 flex justify-around items-center shadow-2xl rounded-t-[2.5rem]">
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="flex flex-col items-center text-black">
+            <span class="text-3xl">🏠</span><span class="text-[10px] font-black uppercase">Menú</span>
+        </button>
+        <button onclick="abrirAdmin()" class="flex flex-col items-center text-zinc-400">
+            <span class="text-3xl">⚙️</span><span class="text-[10px] font-black uppercase italic">Admin</span>
+        </button>
+    </nav>
 
     <script>
-        // Mantenemos la lógica de suscripción y pedidos igual
-        // ... (Copia los scripts del código anterior aquí)
+        // --- SUSCRIPCIÓN ---
+        const FECHA_VENCIMIENTO = "2026-03-01"; 
+        const TU_WHATSAPP = "573117700431";
+
+        function verificarSuscripcion() {
+            const hoy = new Date();
+            const vencimiento = new Date(FECHA_VENCIMIENTO);
+            if (hoy > vencimiento) {
+                document.body.innerHTML = `
+                    <div style="height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #000; color: #fff; text-align: center; padding: 20px; font-family: sans-serif;">
+                        <h1 style="color: #FFCC00; font-size: 2.5rem; font-weight: 900; font-style: italic;">APP SUSPENDIDA</h1>
+                        <p style="margin: 15px 0;">La suscripción ha vencido.</p>
+                        <a href="https://wa.me/${TU_WHATSAPP}?text=Renovar suscripción Maxi Comidas" 
+                           style="background: #25D366; color: white; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; margin-top: 25px;">
+                           RENOVAR 🚀
+                        </a>
+                    </div>
+                `;
+            }
+        }
+        verificarSuscripcion();
+
+        let pedidos = JSON.parse(localStorage.getItem('pedidos_maxi')) || [];
+        let pedidoTemp = null;
+
+        function mostrarResumen() {
+            const cliente = document.getElementById('cliente').value;
+            const celular = document.getElementById('celular').value;
+            const direccion = document.getElementById('direccion').value;
+            const notas = document.getElementById('notas').value;
+            const inputs = document.querySelectorAll('.cantidad');
+            
+            let items = [];
+            let total = 0;
+
+            inputs.forEach(input => {
+                const cant = parseInt(input.value);
+                if (cant > 0) {
+                    const sub = cant * parseInt(input.dataset.precio);
+                    items.push({ nombre: input.dataset.nombre, cant, sub });
+                    total += sub;
+                }
+            });
+
+            if (!cliente || !direccion || items.length === 0) return alert("⚠️ Completa los datos.");
+
+            pedidoTemp = { cliente, celular, direccion, notas, items, total };
+
+            document.getElementById('resumenContenido').innerHTML = `
+                <div class="bg-zinc-800 p-4 rounded-2xl mb-4 border-l-4 border-yellow-500 text-xs">
+                    <p class="font-bold text-yellow-500 uppercase">Entrega:</p>
+                    <p class="font-bold">${cliente}</p>
+                    <p class="text-gray-400 italic">📍 ${direccion}</p>
+                    ${notas ? `<p class="text-orange-400 mt-2 italic">📝 Nota: ${notas}</p>` : ''}
+                </div>
+                <div class="space-y-2">
+                    ${items.map(i => `<p class="flex justify-between font-bold"><span>${i.nombre} x${i.cant}</span> <span class="text-yellow-500">$${i.sub.toLocaleString()}</span></p>`).join('')}
+                </div>
+                <div class="mt-6 text-center border-t border-zinc-800 pt-4 font-black text-2xl text-yellow-500 uppercase italic">
+                    Total: $${total.toLocaleString()}
+                </div>
+            `;
+            document.getElementById('resumenModal').classList.remove('hidden');
+        }
+
+        function cerrarResumen() { document.getElementById('resumenModal').classList.add('hidden'); }
+
+        function confirmarYEnviar() {
+            const idPedido = Math.floor(Math.random() * 9000) + 1000;
+            const registro = {
+                id: idPedido,
+                fecha: new Date().toLocaleString(),
+                ...pedidoTemp,
+                resumenItems: pedidoTemp.items.map(i => `${i.nombre} x${i.cant}`).join(', ')
+            };
+
+            pedidos.push(registro);
+            localStorage.setItem('pedidos_maxi', JSON.stringify(pedidos));
+
+            const textoWA = encodeURIComponent(
+                `*🔥 MAXI COMIDAS - PEDIDO #${idPedido} 🔥*\n\n` +
+                `*Cliente:* ${pedidoTemp.cliente}\n` +
+                `*WhatsApp:* ${pedidoTemp.celular}\n` +
+                `*Dirección:* ${pedidoTemp.direccion}\n` +
+                `*Notas:* ${pedidoTemp.notas || 'Sin notas'}\n` +
+                `----------------------------------\n` +
+                `${pedidoTemp.items.map(i => `✅ ${i.nombre} x${i.cant}`).join('\n')}\n` +
+                `----------------------------------\n` +
+                `*TOTAL: $${pedidoTemp.total.toLocaleString()}*`
+            );
+
+            window.open(`https://wa.me/573117700431?text=${textoWA}`, '_blank');
+            cerrarResumen();
+        }
+
+        function abrirAdmin() {
+            if(prompt("🔐 Admin:") === "2026") {
+                document.getElementById('adminPanel').classList.toggle('hidden');
+                renderAdmin();
+                window.scrollTo(0, document.body.scrollHeight);
+            }
+        }
+
+        function renderAdmin() {
+            const lista = document.getElementById('listaPedidos');
+            lista.innerHTML = pedidos.slice().reverse().map(p => `
+                <div class="bg-zinc-800 p-4 rounded-3xl border-l-8 border-yellow-500 text-[10px]">
+                    <p class="font-black text-yellow-500 uppercase tracking-tighter">${p.fecha} - #${p.id}</p>
+                    <p class="text-white text-lg font-black uppercase italic">${p.cliente}</p>
+                    <p class="text-gray-400">📍 ${p.direccion}</p>
+                    <p class="text-white mt-1 border-t border-zinc-700 pt-1">🍔 ${p.resumenItems}</p>
+                    <p class="text-green-500 font-black text-lg mt-1">$${p.total.toLocaleString()}</p>
+                </div>
+            `).join('');
+        }
+
+        function exportarExcel() {
+            const ws = XLSX.utils.json_to_sheet(pedidos);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "Ventas");
+            XLSX.writeFile(wb, "Reporte_MaxiComidas.xlsx");
+        }
     </script>
 </body>
 </html>
