@@ -17,94 +17,106 @@
 
     <div id="appContent">
         <header class="bg-white p-6 text-center shadow-2xl rounded-b-[3rem] border-b-8 border-yellow-500">
-            <img src="logo-maxi.png" alt="MAXI COMIDAS" class="w-24 h-24 mx-auto mb-2 rounded-full border-2 border-black object-cover">
-            <h1 class="text-3xl font-black text-black italic uppercase italic">MAXI COMIDAS</h1>
-            <p class="text-[10px] font-bold text-gray-500 uppercase">📍 Pedidos: 3205901068</p>
+            <img src="logo-maxi.png" alt="MAXI COMIDAS" class="w-32 h-32 mx-auto mb-2 rounded-full border-2 border-black object-cover">
+            <h1 class="text-4xl font-black text-black italic uppercase italic">MAXI COMIDAS</h1>
+            <p class="text-xs font-bold text-gray-500 uppercase italic">📍 Pedidos: 3205901068</p>
         </header>
 
-        <main class="p-4 space-y-4 mt-4">
+        <main class="p-4 space-y-6 mt-4">
             
-            <div class="bg-zinc-900 rounded-3xl p-4 flex gap-4 border border-zinc-800 card-shadow">
-                <img src="hamburguesa-sencilla.jpg" class="w-24 h-24 rounded-2xl object-cover">
-                <div class="flex-1">
-                    <h3 class="font-black text-lg uppercase italic italic">Sencilla</h3>
-                    <p class="text-xs text-yellow-500 font-bold">$16.000</p>
-                    <input type="number" min="0" placeholder="0" class="cantidad mt-2 w-16 bg-zinc-800 border border-yellow-500 rounded-lg p-1 text-center font-bold text-white" data-nombre="Sencilla" data-precio="16000">
+            <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 flex flex-col card-shadow">
+                <img src="hamburguesa-sencilla.jpg" class="w-full h-64 object-cover">
+                <div class="p-5">
+                    <h3 class="text-2xl font-black uppercase italic text-white italic">Sencilla</h3>
+                    <p class="text-sm text-gray-400 mt-1 leading-relaxed">Pan, carne artesanal, queso, tocineta, ripio de papa, ensalada dulce, tomate, lechuga.</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-yellow-500 font-black text-2xl">$16.000</span>
+                        <input type="number" min="0" placeholder="0" class="cantidad w-20 bg-zinc-800 border-2 border-yellow-500 rounded-xl p-2 text-center font-bold text-white text-lg" data-nombre="Sencilla" data-precio="16000">
+                    </div>
                 </div>
             </div>
 
-            <div class="bg-zinc-900 rounded-3xl p-4 flex gap-4 border border-zinc-800 card-shadow">
-                <img src="arepa-burger.jpg" class="w-24 h-24 rounded-2xl object-cover">
-                <div class="flex-1">
-                    <h3 class="font-black text-lg uppercase italic italic">Arepa Burger</h3>
-                    <p class="text-xs text-yellow-500 font-bold">$16.000</p>
-                    <input type="number" min="0" placeholder="0" class="cantidad mt-2 w-16 bg-zinc-800 border border-yellow-500 rounded-lg p-1 text-center font-bold text-white" data-nombre="Arepa Burger" data-precio="16000">
+            <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 flex flex-col card-shadow">
+                <img src="arepa-burguer.jpg" class="w-full h-64 object-cover">
+                <div class="p-5">
+                    <h3 class="text-2xl font-black uppercase italic text-white italic">Arepa Burger</h3>
+                    <p class="text-sm text-gray-400 mt-1 leading-relaxed">Arepa, carne artesanal, queso, tocineta, ripio de papa, ensalada dulce, tomate, lechuga.</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-yellow-500 font-black text-2xl">$16.000</span>
+                        <input type="number" min="0" placeholder="0" class="cantidad w-20 bg-zinc-800 border-2 border-yellow-500 rounded-xl p-2 text-center font-bold text-white text-lg" data-nombre="Arepa Burger" data-precio="16000">
+                    </div>
                 </div>
             </div>
 
-            <div class="bg-zinc-900 rounded-3xl p-4 flex gap-4 border border-zinc-800 card-shadow">
-                <img src="hamburguesa-especial.jpg" class="w-24 h-24 rounded-2xl object-cover">
-                <div class="flex-1">
-                    <h3 class="font-black text-lg uppercase italic italic">Especial</h3>
-                    <p class="text-xs text-yellow-500 font-bold">$22.000</p>
-                    <input type="number" min="0" placeholder="0" class="cantidad mt-2 w-16 bg-zinc-800 border border-yellow-500 rounded-lg p-1 text-center font-bold text-white" data-nombre="Especial" data-precio="22000">
+            <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 flex flex-col card-shadow">
+                <img src="hamburguesa-especial.jpg" class="w-full h-64 object-cover">
+                <div class="p-5">
+                    <h3 class="text-2xl font-black uppercase italic text-white italic">Especial</h3>
+                    <p class="text-sm text-gray-400 mt-1 leading-relaxed">Pan, carne artesanal, doble queso, doble tocineta, ensalada dulce, papas a la francesa o criollas.</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-yellow-500 font-black text-2xl">$22.000</span>
+                        <input type="number" min="0" placeholder="0" class="cantidad w-20 bg-zinc-800 border-2 border-yellow-500 rounded-xl p-2 text-center font-bold text-white text-lg" data-nombre="Especial" data-precio="22000">
+                    </div>
                 </div>
             </div>
 
-            <div class="bg-zinc-900 rounded-3xl p-4 flex gap-4 border border-zinc-800 card-shadow">
-                <img src="hamburguesa-doble.jpg" class="w-24 h-24 rounded-2xl object-cover">
-                <div class="flex-1">
-                    <h3 class="font-black text-lg uppercase italic italic">Doble Carne</h3>
-                    <p class="text-xs text-yellow-500 font-bold">$27.000</p>
-                    <input type="number" min="0" placeholder="0" class="cantidad mt-2 w-16 bg-zinc-800 border border-yellow-500 rounded-lg p-1 text-center font-bold text-white" data-nombre="Doble Carne" data-precio="27000">
+            <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 flex flex-col card-shadow">
+                <img src="hamburguesa-doble-carne.jpg" class="w-full h-64 object-cover">
+                <div class="p-5">
+                    <h3 class="text-2xl font-black uppercase italic text-white italic">Doble Carne</h3>
+                    <p class="text-sm text-gray-400 mt-1 leading-relaxed">Pan, doble carne artesanal, doble queso, doble tocineta, ripio de papas, ensalada dulce, tomate, lechuga, papas francesas o criollas.</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-yellow-500 font-black text-2xl">$27.000</span>
+                        <input type="number" min="0" placeholder="0" class="cantidad w-20 bg-zinc-800 border-2 border-yellow-500 rounded-xl p-2 text-center font-bold text-white text-lg" data-nombre="Doble Carne" data-precio="27000">
+                    </div>
                 </div>
             </div>
         </main>
 
-        <section class="p-6 bg-maxi-yellow m-4 rounded-[2rem] text-black shadow-xl">
-            <h2 class="font-black text-xl mb-4 uppercase italic italic text-center">Datos del Pedido</h2>
+        <section class="p-6 bg-maxi-yellow m-4 rounded-[2.5rem] text-black shadow-xl">
+            <h2 class="font-black text-2xl mb-4 uppercase italic italic text-center">Datos del Pedido</h2>
             <div class="space-y-3">
-                <input type="text" id="cliente" placeholder="Nombre completo" class="w-full p-3 rounded-xl border-none font-bold">
-                <input type="tel" id="celular" placeholder="Tu WhatsApp" class="w-full p-3 rounded-xl border-none font-bold">
-                <input type="text" id="direccion" placeholder="Dirección exacta de entrega" class="w-full p-3 rounded-xl border-none font-bold text-red-700">
-                <textarea id="notas" placeholder="Observaciones (Ej: Sin cebolla)" class="w-full p-3 rounded-xl border-none font-bold text-sm h-20"></textarea>
-                <button onclick="mostrarResumen()" class="w-full bg-black text-white font-black p-4 rounded-xl shadow-lg hover:bg-zinc-800 transition text-lg">
-                    🛒 REVISAR PEDIDO
+                <input type="text" id="cliente" placeholder="Nombre completo" class="w-full p-4 rounded-2xl border-none font-bold shadow-inner">
+                <input type="tel" id="celular" placeholder="Tu número WhatsApp" class="w-full p-4 rounded-2xl border-none font-bold shadow-inner">
+                <input type="text" id="direccion" placeholder="Dirección exacta de entrega" class="w-full p-4 rounded-2xl border-none font-bold text-red-700 shadow-inner">
+                <textarea id="notas" placeholder="Observaciones (Ej: Sin cebolla, extra salsa)" class="w-full p-4 rounded-2xl border-none font-bold text-sm h-24 shadow-inner"></textarea>
+                <button onclick="mostrarResumen()" class="w-full bg-black text-white font-black p-5 rounded-2xl shadow-lg hover:bg-zinc-800 transition text-xl uppercase italic italic">
+                    🛒 Revisar mi Pedido
                 </button>
             </div>
         </section>
     </div>
 
     <div id="resumenModal" class="fixed inset-0 bg-black/95 z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-zinc-900 w-full max-w-sm rounded-[2.5rem] p-6 border-2 border-yellow-500 shadow-2xl text-center">
-            <h2 class="text-yellow-500 font-black text-xl uppercase italic mb-4">Resumen de Pedido</h2>
+        <div class="bg-zinc-900 w-full max-w-sm rounded-[2.5rem] p-8 border-2 border-yellow-500 shadow-2xl text-center">
+            <h2 class="text-yellow-500 font-black text-2xl uppercase italic mb-4">Resumen de Pedido</h2>
             <div id="resumenContenido" class="text-white text-left text-sm space-y-2 mb-6 border-y border-zinc-800 py-4 max-h-60 overflow-y-auto"></div>
-            <div class="flex flex-col gap-2">
-                <button onclick="confirmarYEnviar()" class="bg-green-600 text-white font-black p-4 rounded-xl shadow-lg">✅ TODO BIEN, PEDIR</button>
-                <button onclick="cerrarResumen()" class="text-gray-500 text-xs font-bold py-2 uppercase">❌ VOLVER A EDITAR</button>
+            <div class="flex flex-col gap-3">
+                <button onclick="confirmarYEnviar()" class="bg-green-600 text-white font-black p-5 rounded-2xl shadow-lg uppercase italic italic">✅ Enviar por WhatsApp</button>
+                <button onclick="cerrarResumen()" class="text-gray-500 text-xs font-bold py-2 uppercase tracking-widest">❌ Editar Pedido</button>
             </div>
         </div>
     </div>
 
     <section id="adminPanel" class="hidden p-6 bg-zinc-900 border-t-4 border-yellow-500 m-4 rounded-3xl">
-        <h2 class="font-black text-yellow-500 mb-4 text-center">HISTORIAL DE CLIENTES</h2>
+        <h2 class="font-black text-yellow-500 mb-4 text-center">HISTORIAL DE VENTAS</h2>
         <div class="flex gap-2 mb-4">
-            <button onclick="exportarExcel()" class="bg-blue-600 flex-1 p-3 rounded-xl font-bold text-[10px] uppercase">📥 Reporte Excel</button>
+            <button onclick="exportarExcel()" class="bg-blue-600 flex-1 p-3 rounded-xl font-bold text-[10px] uppercase">📥 Descargar Excel</button>
         </div>
         <div id="listaPedidos" class="space-y-3 max-h-96 overflow-y-auto"></div>
     </section>
 
-    <nav class="fixed bottom-0 w-full bg-white p-4 flex justify-around shadow-2xl rounded-t-[2rem]">
+    <nav class="fixed bottom-0 w-full bg-white p-4 flex justify-around items-center shadow-2xl rounded-t-[2.5rem]">
         <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="flex flex-col items-center text-black">
             <span class="text-3xl">🏠</span><span class="text-[10px] font-black uppercase">Menú</span>
         </button>
-        <button onclick="abrirAdmin()" class="flex flex-col items-center text-zinc-400 transition">
-            <span class="text-3xl">⚙️</span><span class="text-[10px] font-black uppercase italic">Admin</span>
+        <button onclick="abrirAdmin()" class="flex flex-col items-center text-zinc-400">
+            <span class="text-3xl">⚙️</span><span class="text-[10px] font-black uppercase italic italic">Admin</span>
         </button>
     </nav>
 
     <script>
-        // --- CONTROL DE SUSCRIPCIÓN (CAMBIA ESTA FECHA PARA DESBLOQUEAR) ---
+        // --- CONTROL DE SUSCRIPCIÓN ---
         const FECHA_VENCIMIENTO = "2026-03-01"; 
         const TU_WHATSAPP = "573117700431";
 
@@ -114,13 +126,11 @@
             if (hoy > vencimiento) {
                 document.body.innerHTML = `
                     <div style="height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #000; color: #fff; text-align: center; padding: 20px; font-family: sans-serif;">
-                        <img src="logo-maxi.png" style="width: 150px; border-radius: 50%; border: 4px solid #FFCC00; margin-bottom: 20px;">
-                        <h1 style="color: #FFCC00; font-size: 2rem; font-weight: 900; font-style: italic;">APP SUSPENDIDA</h1>
-                        <p style="margin: 10px 0;">La suscripción mensual de este negocio ha vencido.</p>
-                        <p>Para activar el servicio nuevamente, contacta al administrador.</p>
+                        <h1 style="color: #FFCC00; font-size: 2.5rem; font-weight: 900; font-style: italic;">APP SUSPENDIDA</h1>
+                        <p style="margin: 15px 0; font-size: 1.1rem;">La suscripción mensual ha vencido.</p>
                         <a href="https://wa.me/${TU_WHATSAPP}?text=Hola, quiero renovar mi suscripción para MAXI COMIDAS" 
-                           style="background: #25D366; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; margin-top: 25px; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);">
-                           RENOVAR SUSCRIPCIÓN 🚀
+                           style="background: #25D366; color: white; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; margin-top: 25px;">
+                           RENOVAR AHORA 🚀
                         </a>
                     </div>
                 `;
@@ -150,22 +160,22 @@
                 }
             });
 
-            if (!cliente || !direccion || items.length === 0) return alert("⚠️ Completa los datos y elige tu pedido.");
+            if (!cliente || !direccion || items.length === 0) return alert("⚠️ Por favor completa tus datos y selecciona al menos un plato.");
 
             pedidoTemp = { cliente, celular, direccion, notas, items, total };
 
             document.getElementById('resumenContenido').innerHTML = `
-                <div class="bg-zinc-800 p-3 rounded-xl mb-3 border-l-4 border-yellow-500">
-                    <p class="font-bold text-yellow-500 uppercase italic italic text-xs">Datos de Envío:</p>
-                    <p>${cliente} | ${celular}</p>
-                    <p class="text-[10px] text-gray-400">📍 ${direccion}</p>
-                    ${notas ? `<p class="text-[10px] text-orange-400 mt-1 italic">📝 Nota: ${notas}</p>` : ''}
+                <div class="bg-zinc-800 p-4 rounded-2xl mb-4 border-l-4 border-yellow-500">
+                    <p class="font-bold text-yellow-500 uppercase text-xs">Entrega para:</p>
+                    <p class="font-bold text-lg">${cliente}</p>
+                    <p class="text-xs text-gray-400 mt-1 italic">🏠 ${direccion}</p>
+                    ${notas ? `<p class="text-xs text-orange-400 mt-2 italic">📝 Nota: ${notas}</p>` : ''}
                 </div>
-                <div class="space-y-1">
-                    ${items.map(i => `<p class="flex justify-between"><span>${i.nombre} x${i.cant}</span> <span>$${i.sub.toLocaleString()}</span></p>`).join('')}
+                <div class="space-y-2">
+                    ${items.map(i => `<p class="flex justify-between font-bold"><span>${i.nombre} x${i.cant}</span> <span class="text-yellow-500">$${i.sub.toLocaleString()}</span></p>`).join('')}
                 </div>
-                <div class="mt-4 text-center border-t border-zinc-800 pt-3 font-black text-2xl text-yellow-500">
-                    TOTAL: $${total.toLocaleString()}
+                <div class="mt-6 text-center border-t border-zinc-800 pt-4 font-black text-2xl text-yellow-500 uppercase italic">
+                    Total: $${total.toLocaleString()}
                 </div>
             `;
             document.getElementById('resumenModal').classList.remove('hidden');
@@ -202,34 +212,31 @@
         }
 
         function abrirAdmin() {
-            if(prompt("🔐 Clave de Administrador:") === "2026") {
+            if(prompt("🔐 Acceso Administrador:") === "2026") {
                 document.getElementById('adminPanel').classList.toggle('hidden');
                 renderAdmin();
                 window.scrollTo(0, document.body.scrollHeight);
-            } else {
-                alert("❌ Clave incorrecta");
             }
         }
 
         function renderAdmin() {
             const lista = document.getElementById('listaPedidos');
             lista.innerHTML = pedidos.slice().reverse().map(p => `
-                <div class="bg-zinc-800 p-4 rounded-2xl border-l-8 border-yellow-500 text-[10px] shadow-lg">
-                    <p class="font-black text-yellow-500 uppercase tracking-tighter">${p.fecha} - #${p.id}</p>
-                    <p class="text-white text-base font-black uppercase italic italic">${p.cliente}</p>
-                    <p class="text-gray-400">📍 ${p.direccion}</p>
-                    <p class="text-white mt-1 border-t border-zinc-700 pt-1">🍔 ${p.resumenItems}</p>
-                    <p class="text-green-500 font-black text-sm mt-1">$${p.total.toLocaleString()}</p>
+                <div class="bg-zinc-800 p-4 rounded-3xl border-l-8 border-yellow-500 shadow-lg">
+                    <p class="font-black text-yellow-500 text-[10px] uppercase">${p.fecha} - #${p.id}</p>
+                    <p class="text-white text-lg font-black uppercase italic">${p.cliente}</p>
+                    <p class="text-gray-400 text-xs">📍 ${p.direccion}</p>
+                    <p class="text-white mt-2 border-t border-zinc-700 pt-2 text-xs">🍔 ${p.resumenItems}</p>
+                    <p class="text-green-500 font-black text-lg mt-1">$${p.total.toLocaleString()}</p>
                 </div>
             `).join('');
         }
 
         function exportarExcel() {
-            if(pedidos.length === 0) return alert("No hay datos para exportar.");
             const ws = XLSX.utils.json_to_sheet(pedidos);
             const wb = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(wb, ws, "Base_Datos_Maxi");
-            XLSX.writeFile(wb, "Clientes_MaxiComidas.xlsx");
+            XLSX.utils.book_append_sheet(wb, ws, "Ventas");
+            XLSX.writeFile(wb, "Reporte_Ventas_MaxiComidas.xlsx");
         }
     </script>
 </body>
