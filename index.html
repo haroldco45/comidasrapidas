@@ -81,7 +81,7 @@
         <div class="space-y-4">
             <input type="text" id="cliente" placeholder="Tu Nombre completo" class="w-full p-4 rounded-2xl border-none shadow-md font-bold">
             <input type="tel" id="celular" placeholder="Tu número de WhatsApp" class="w-full p-4 rounded-2xl border-none shadow-md font-bold">
-            <input type="text" id="direccion" placeholder="Dirección de entrega (Barrio, Calle, Casa)" class="w-full p-4 rounded-2xl border-none shadow-md font-bold text-red-700">
+            <input type="text" id="direccion" placeholder="Dirección exacta (Barrio, Calle, Casa)" class="w-full p-4 rounded-2xl border-none shadow-md font-bold text-red-700">
             <input type="email" id="correo" placeholder="Correo (Opcional)" class="w-full p-4 rounded-2xl border-none shadow-md font-bold">
             <button onclick="enviarPedido()" class="w-full bg-black text-white font-black p-5 rounded-2xl shadow-lg hover:bg-zinc-800 transition active:scale-95 flex justify-center items-center gap-3 text-xl">
                 <span>🟢</span> ENVIAR POR WHATSAPP
@@ -91,9 +91,9 @@
 
     <section id="adminPanel" class="hidden p-6 bg-zinc-900 border-t-4 border-maxi-yellow m-4 rounded-3xl">
         <h2 class="font-bold text-xl mb-4 text-maxi-yellow uppercase text-center font-black">Panel Admin</h2>
-        <div class="grid grid-cols-2 gap-3 mb-6">
-            <button onclick="exportarExcel()" class="bg-blue-700 p-4 rounded-2xl font-bold text-xs uppercase text-white">📥 Informe Excel</button>
-            <button onclick="crearBackup()" class="bg-purple-700 p-4 rounded-2xl font-bold text-xs uppercase text-white">💾 Backup JSON</button>
+        <div class="grid grid-cols-2 gap-3 mb-6 text-white">
+            <button onclick="exportarExcel()" class="bg-blue-700 p-4 rounded-2xl font-bold text-xs uppercase">📥 Informe Excel</button>
+            <button onclick="crearBackup()" class="bg-purple-700 p-4 rounded-2xl font-bold text-xs uppercase">💾 Backup JSON</button>
         </div>
         <div id="listaPedidos" class="space-y-3 max-h-80 overflow-y-auto"></div>
     </section>
@@ -171,18 +171,18 @@
         function renderAdmin() {
             const lista = document.getElementById('listaPedidos');
             lista.innerHTML = pedidos.slice().reverse().map(p => `
-                <div class="bg-zinc-800 p-4 rounded-2xl border-l-8 border-yellow-500">
-                    <p class="font-black text-yellow-500 text-[10px]">${p.fecha}</p>
-                    <p class="text-white font-bold">${p.cliente}</p>
-                    <p class="text-white text-[11px]">🏠 ${p.direccion}</p>
-                    <p class="text-green-500 font-black">$${p.total.toLocaleString()}</p>
-                    <p class="text-gray-400 text-[9px] mt-1 italic">${p.productos}</p>
+                <div class="bg-zinc-800 p-4 rounded-2xl border-l-8 border-yellow-500 shadow-lg">
+                    <p class="font-black text-yellow-500 text-[10px] uppercase">${p.fecha}</p>
+                    <p class="text-white font-bold text-lg">${p.cliente}</p>
+                    <p class="text-white text-[11px] mb-1">🏠 ${p.direccion}</p>
+                    <p class="text-green-500 font-black text-xl">$${p.total.toLocaleString()}</p>
+                    <p class="text-gray-400 text-[10px] mt-2 italic border-t border-zinc-700 pt-1">${p.productos}</p>
                 </div>
             `).join('');
         }
 
         function exportarExcel() {
-            if(pedidos.length === 0) return alert("No hay pedidos.");
+            if(pedidos.length === 0) return alert("No hay pedidos registrados.");
             const ws = XLSX.utils.json_to_sheet(pedidos);
             const wb = XLSX.utils.book_new();
             XLSX.utils.book_append_sheet(wb, ws, "Ventas");
@@ -190,6 +190,7 @@
         }
 
         function crearBackup() {
+            if(pedidos.length === 0) return alert("No hay datos para respaldar.");
             const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(pedidos));
             const dlAnchor = document.createElement('a');
             dlAnchor.setAttribute("href", dataStr);
