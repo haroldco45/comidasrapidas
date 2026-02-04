@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAXI COMIDAS - Pedidos Online</title>
+    <title>MAXI COMIDAS - Facturación</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <style>
@@ -27,7 +27,7 @@
                 <img src="hamburguesa-sencilla.jpg" class="w-full h-64 object-cover">
                 <div class="p-5">
                     <h3 class="text-2xl font-black uppercase italic text-white italic">Sencilla</h3>
-                    <p class="text-sm text-gray-400 mt-1 italic leading-relaxed">Pan, carne artesanal, queso, tocineta, ripio de papa, ensalcada dulce, tomate, lechuga.</p>
+                    <p class="text-sm text-gray-400 mt-1 italic">Pan, carne artesanal, queso, tocineta...</p>
                     <div class="flex justify-between items-center mt-4">
                         <span class="text-yellow-500 font-black text-2xl">$16.000</span>
                         <input type="number" min="0" value="0" class="cantidad w-20 bg-zinc-800 border-2 border-yellow-500 rounded-xl p-2 text-center font-bold text-white text-lg" data-nombre="Sencilla" data-precio="16000">
@@ -39,7 +39,7 @@
                 <img src="arepa-burger.jpg" class="w-full h-64 object-cover">
                 <div class="p-5">
                     <h3 class="text-2xl font-black uppercase italic text-white italic">Arepa Burger</h3>
-                    <p class="text-sm text-gray-400 mt-1 italic leading-relaxed">Arepa, carne artesanal, queso, tocineta, ripio de papa, ensalnada dulce, tomate lechuga.</p>
+                    <p class="text-sm text-gray-400 mt-1 italic">Arepa, carne artesanal, queso, tocineta...</p>
                     <div class="flex justify-between items-center mt-4">
                         <span class="text-yellow-500 font-black text-2xl">$16.000</span>
                         <input type="number" min="0" value="0" class="cantidad w-20 bg-zinc-800 border-2 border-yellow-500 rounded-xl p-2 text-center font-bold text-white text-lg" data-nombre="Arepa Burger" data-precio="16000">
@@ -51,7 +51,7 @@
                 <img src="hamburguesa-especial.jpg" class="w-full h-64 object-cover">
                 <div class="p-5">
                     <h3 class="text-2xl font-black uppercase italic text-white italic">Especial</h3>
-                    <p class="text-sm text-gray-400 mt-1 italic leading-relaxed">Pan, carne artesanal, doble queso, doble tocineta, ensalada dulce, papas a la francesa o criollas.</p>
+                    <p class="text-sm text-gray-400 mt-1 italic">Doble queso, doble tocineta, papas...</p>
                     <div class="flex justify-between items-center mt-4">
                         <span class="text-yellow-500 font-black text-2xl">$22.000</span>
                         <input type="number" min="0" value="0" class="cantidad w-20 bg-zinc-800 border-2 border-yellow-500 rounded-xl p-2 text-center font-bold text-white text-lg" data-nombre="Especial" data-precio="22000">
@@ -63,7 +63,7 @@
                 <img src="hamburguesa-doble.jpg" class="w-full h-64 object-cover">
                 <div class="p-5">
                     <h3 class="text-2xl font-black uppercase italic text-white italic">Doble Carne</h3>
-                    <p class="text-sm text-gray-400 mt-1 italic leading-relaxed">Pan, doble carne artesanal, doble queso, doble tocineta, ripio de papas, ensalada dulce, tomate, lechuga, papas francesas o criollas.</p>
+                    <p class="text-sm text-gray-400 mt-1 italic">Doble carne artesanal, ripio de papas...</p>
                     <div class="flex justify-between items-center mt-4">
                         <span class="text-yellow-500 font-black text-2xl">$27.000</span>
                         <input type="number" min="0" value="0" class="cantidad w-20 bg-zinc-800 border-2 border-yellow-500 rounded-xl p-2 text-center font-bold text-white text-lg" data-nombre="Doble Carne" data-precio="27000">
@@ -76,43 +76,37 @@
             <h2 class="font-black text-2xl mb-4 uppercase italic text-center">Tus Datos</h2>
             <div class="space-y-4">
                 <input type="text" id="cliente" placeholder="Nombre completo" class="w-full p-4 rounded-2xl border-none font-bold shadow-inner">
-                <input type="tel" id="celular" placeholder="Número de WhatsApp" class="w-full p-4 rounded-2xl border-none font-bold shadow-inner">
+                <input type="tel" id="celular" placeholder="WhatsApp" class="w-full p-4 rounded-2xl border-none font-bold shadow-inner">
                 <input type="text" id="direccion" placeholder="Dirección de entrega" class="w-full p-4 rounded-2xl border-none font-bold text-red-700 shadow-inner">
-                <textarea id="notas" placeholder="Observaciones (Ej: Sin cebolla)" class="w-full p-4 rounded-2xl border-none font-bold text-sm h-24 shadow-inner"></textarea>
+                <textarea id="notas" placeholder="Observaciones..." class="w-full p-4 rounded-2xl border-none font-bold text-sm h-24 shadow-inner"></textarea>
                 <button onclick="mostrarResumen()" class="w-full bg-black text-white font-black p-5 rounded-2xl shadow-lg hover:bg-zinc-800 transition text-xl uppercase italic">
-                    🛒 Revisar mi Pedido
+                    🛒 Revisar Factura
                 </button>
             </div>
         </section>
     </div>
 
     <div id="resumenModal" class="fixed inset-0 bg-black/95 z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-zinc-900 w-full max-w-sm rounded-[2.5rem] p-8 border-2 border-yellow-500 shadow-2xl text-center">
-            <h2 class="text-yellow-500 font-black text-2xl uppercase italic mb-2">Resumen de Pedido</h2>
-            <p id="numPedidoVisual" class="text-white font-black text-sm mb-4 bg-zinc-800 inline-block px-3 py-1 rounded-full border border-yellow-500 italic"></p>
-            <div id="resumenContenido" class="text-white text-left text-sm space-y-2 mb-6 border-y border-zinc-800 py-4 max-h-60 overflow-y-auto"></div>
+        <div class="bg-zinc-900 w-full max-w-sm rounded-[2.5rem] p-8 border-2 border-yellow-500 shadow-2xl text-center text-white">
+            <h2 class="text-yellow-500 font-black text-2xl uppercase italic mb-2">Detalle de Factura</h2>
+            <p id="numPedidoVisual" class="font-black text-sm mb-4 bg-zinc-800 inline-block px-3 py-1 rounded-full border border-yellow-500 italic"></p>
+            
+            <div id="resumenContenido" class="text-left text-xs space-y-3 mb-6 border-y border-zinc-800 py-4 max-h-60 overflow-y-auto">
+                </div>
+            
             <div class="flex flex-col gap-3">
-                <button onclick="confirmarYEnviar()" class="bg-green-600 text-white font-black p-5 rounded-2xl shadow-lg uppercase italic">✅ Pedir por WhatsApp</button>
-                <button onclick="cerrarResumen()" class="text-gray-500 text-xs font-bold py-2 uppercase tracking-widest">❌ Editar Pedido</button>
+                <button onclick="confirmarYEnviar()" class="bg-green-600 text-white font-black p-5 rounded-2xl shadow-lg uppercase italic">✅ Confirmar Pedido</button>
+                <button onclick="cerrarResumen()" class="text-gray-500 text-xs font-bold py-2 uppercase tracking-widest">❌ Modificar</button>
             </div>
         </div>
     </div>
 
     <section id="adminPanel" class="hidden p-6 bg-zinc-900 border-t-4 border-yellow-500 m-4 rounded-3xl">
-        <div class="flex justify-between items-center mb-6">
-            <h2 class="font-black text-yellow-500 uppercase italic text-xl">Panel Maestro</h2>
-            <div class="text-right">
-                <p id="relojAdmin" class="text-white text-xs font-black">00:00:00</p>
-                <p id="cuentaRegresivaAdmin" class="text-[10px] font-black text-red-500 uppercase">Calculando...</p>
-            </div>
-        </div>
-
+        <h2 class="font-black text-yellow-500 uppercase italic text-xl mb-6">Panel Maestro</h2>
         <div class="grid grid-cols-2 gap-2 mb-6">
-            <button onclick="exportarExcel()" class="bg-blue-600 p-3 rounded-xl font-bold text-[10px] uppercase shadow-lg">📥 Reporte Excel</button>
-            <button onclick="crearBackup()" class="bg-purple-700 p-3 rounded-xl font-bold text-[10px] uppercase shadow-lg">💾 Backup JSON</button>
+            <button onclick="exportarExcel()" class="bg-blue-600 p-3 rounded-xl font-bold text-[10px] uppercase">📥 Reporte Excel</button>
+            <button onclick="crearBackup()" class="bg-purple-700 p-3 rounded-xl font-bold text-[10px] uppercase">💾 Backup JSON</button>
         </div>
-
-        <h3 class="text-yellow-500 font-black uppercase text-xs mb-3 italic">Historial Local</h3>
         <div id="listaPedidos" class="space-y-3 max-h-80 overflow-y-auto"></div>
     </section>
 
@@ -126,27 +120,7 @@
     </nav>
 
     <script>
-        const FECHA_VENCIMIENTO = "2026-03-01"; 
         const TU_WHATSAPP = "573117700431";
-
-        function verificarVencimiento() {
-            const ahora = new Date();
-            const venc = new Date(FECHA_VENCIMIENTO);
-            const diff = venc - ahora;
-            if(document.getElementById('relojAdmin')) document.getElementById('relojAdmin').innerText = ahora.toLocaleTimeString();
-            if (diff <= 0) { bloquearApp(); } 
-            else {
-                const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                if(document.getElementById('cuentaRegresivaAdmin')) document.getElementById('cuentaRegresivaAdmin').innerText = `${dias}d ${horas}h Restantes`;
-            }
-        }
-        setInterval(verificarVencimiento, 1000);
-
-        function bloquearApp() {
-            document.body.innerHTML = `<div style="height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #000; color: #fff; text-align: center; padding: 20px; font-family: sans-serif;"><h1 style="color: #FFCC00; font-size: 2.5rem; font-weight: 900; font-style: italic;">SERVICIO SUSPENDIDO</h1><p style="margin: 15px 0;">La suscripción mensual ha vencido.</p><a href="https://wa.me/${TU_WHATSAPP}?text=Renovar suscripción Maxi" style="background: #25D366; color: white; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; margin-top: 25px; box-shadow: 0 10px 20px rgba(37,211,102,0.3);">PAGAR MENSUALIDAD 🚀</a></div>`;
-        }
-
         let pedidos = JSON.parse(localStorage.getItem('pedidos_maxi')) || [];
         let pedidoTemp = null;
 
@@ -160,37 +134,39 @@
             inputs.forEach(input => {
                 const cant = parseInt(input.value);
                 if (cant > 0) {
-                    const sub = cant * parseInt(input.dataset.precio);
-                    items.push({ nombre: input.dataset.nombre, cant, sub });
+                    const precio = parseInt(input.dataset.precio);
+                    const sub = cant * precio;
+                    items.push({ nombre: input.dataset.nombre, cant, precio, sub });
                     total += sub;
                 }
             });
 
-            if (!cliente || !direccion || !celular || items.length === 0) return alert("⚠️ Por favor completa todos tus datos y selecciona al menos un producto.");
+            if (!cliente || !direccion || items.length === 0) return alert("⚠️ Completa tus datos y pedido.");
 
-            // NÚMERO DE PEDIDO SECUENCIAL
             const numSiguiente = pedidos.length + 1;
-            pedidoTemp = { 
-                id: numSiguiente, 
-                cliente, 
-                celular, 
-                direccion, 
-                notas: document.getElementById('notas').value, 
-                items, 
-                total 
-            };
+            pedidoTemp = { id: numSiguiente, cliente, celular, direccion, notas: document.getElementById('notas').value, items, total };
 
-            document.getElementById('numPedidoVisual').innerText = `PEDIDO #${numSiguiente}`;
+            document.getElementById('numPedidoVisual').innerText = `FACTURA #${numSiguiente}`;
+            
+            // CONSTRUCCIÓN VISUAL DE LA FACTURA
             document.getElementById('resumenContenido').innerHTML = `
-                <div class="bg-zinc-800 p-4 rounded-2xl mb-4 border-l-4 border-yellow-500 text-xs text-white">
-                    <p class="font-bold text-yellow-500 uppercase italic">Cliente:</p>
-                    <p class="font-bold text-lg italic">${cliente}</p>
-                    <p class="text-gray-400 italic mt-1">📍 ${direccion}</p>
+                <div class="mb-4 border-b border-zinc-800 pb-2">
+                    <p class="font-bold text-yellow-500 uppercase">Cliente: ${cliente}</p>
+                    <p class="text-gray-400 italic">Dir: ${direccion}</p>
                 </div>
-                <div class="space-y-2 text-white">
-                    ${items.map(i => `<p class="flex justify-between font-bold"><span>${i.nombre} x${i.cant}</span> <span class="text-yellow-500">$${i.sub.toLocaleString()}</span></p>`).join('')}
+                ${items.map(i => `
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="font-bold text-white">${i.nombre} x${i.cant}</p>
+                            <p class="text-[10px] text-gray-500">Valor Unit: $${i.precio.toLocaleString()}</p>
+                        </div>
+                        <p class="font-black text-yellow-500">$${i.sub.toLocaleString()}</p>
+                    </div>
+                `).join('')}
+                <div class="mt-4 border-t-2 border-yellow-500 pt-4 text-center">
+                    <p class="font-black text-2xl text-yellow-500 uppercase">TOTAL: $${total.toLocaleString()}</p>
                 </div>
-                <div class="mt-6 text-center border-t border-zinc-800 pt-4 font-black text-2xl text-yellow-500 uppercase italic">Total: $${total.toLocaleString()}</div>`;
+            `;
             document.getElementById('resumenModal').classList.remove('hidden');
         }
 
@@ -198,27 +174,26 @@
             const registro = { 
                 ...pedidoTemp, 
                 fecha: new Date().toLocaleString(), 
-                resumenItems: pedidoTemp.items.map(i => `${i.nombre} x${i.cant}`).join(', ') 
+                detalleFactura: pedidoTemp.items.map(i => `${i.nombre} (${i.cant} x $${i.precio.toLocaleString()}) = $${i.sub.toLocaleString()}`).join('\n')
             };
             pedidos.push(registro);
             localStorage.setItem('pedidos_maxi', JSON.stringify(pedidos));
 
-            // EXPLICACIÓN DETALLADA PARA WHATSAPP
+            // MENSAJE DE WHATSAPP TIPO FACTURA
             const textoWA = encodeURIComponent(
-                `🍔 *MAXI COMIDAS - PEDIDO #${pedidoTemp.id}* 🍔\n\n` +
+                `🍔 *MAXI COMIDAS - FACTURA #${pedidoTemp.id}* 🍔\n\n` +
                 `👤 *Cliente:* ${pedidoTemp.cliente}\n` +
                 `📍 *Dirección:* ${pedidoTemp.direccion}\n` +
-                `📱 *WhatsApp:* ${pedidoTemp.celular}\n` +
-                `📝 *Notas:* ${pedidoTemp.notas || 'Ninguna'}\n` +
+                `📱 *Tel:* ${pedidoTemp.celular}\n` +
+                `📝 *Notas:* ${pedidoTemp.notas || 'N/A'}\n` +
                 `----------------------------------\n` +
-                `${pedidoTemp.items.map(i => `✅ ${i.nombre} x${i.cant}`).join('\n')}\n` +
+                `${pedidoTemp.items.map(i => `✅ *${i.nombre}* \n   ${i.cant} x $${i.precio.toLocaleString()} = *$${i.sub.toLocaleString()}*`).join('\n\n')}\n` +
                 `----------------------------------\n` +
-                `💰 *TOTAL A PAGAR: $${pedidoTemp.total.toLocaleString()}*`
+                `💰 *TOTAL A COBRAR: $${pedidoTemp.total.toLocaleString()}*`
             );
 
             window.open(`https://wa.me/${TU_WHATSAPP}?text=${textoWA}`, '_blank');
-            document.getElementById('resumenModal').classList.add('hidden');
-            location.reload(); // Reiniciar para el siguiente cliente
+            location.reload();
         }
 
         function cerrarResumen() { document.getElementById('resumenModal').classList.add('hidden'); }
@@ -234,17 +209,16 @@
             const lista = document.getElementById('listaPedidos');
             lista.innerHTML = pedidos.slice().reverse().map(p => `
                 <div class="bg-zinc-800 p-4 rounded-2xl border-l-4 border-yellow-500 text-[10px] mb-2 relative">
-                    <p class="font-black text-yellow-500 uppercase italic">#${p.id} - ${p.fecha}</p>
+                    <p class="font-black text-yellow-500 uppercase">#${p.id} - ${p.fecha}</p>
                     <p class="text-white text-base font-black uppercase italic">${p.cliente}</p>
-                    <p class="text-gray-400 italic">📍 ${p.direccion}</p>
-                    <p class="text-white mt-1 border-t border-zinc-700 pt-1">🍔 ${p.resumenItems}</p>
-                    <p class="text-green-500 font-black text-sm mt-1 italic">$${p.total.toLocaleString()}</p>
+                    <div class="text-gray-400 mt-1 whitespace-pre-line">${p.detalleFactura}</div>
+                    <p class="text-green-500 font-black text-lg mt-2 italic border-t border-zinc-700 pt-1">TOTAL: $${p.total.toLocaleString()}</p>
                     <button onclick="borrarPedido(${p.id})" class="absolute top-4 right-4 text-red-600 font-bold uppercase text-[8px]">Borrar</button>
                 </div>`).join('');
         }
 
         function borrarPedido(id) {
-            if(confirm("¿Eliminar registro?")) {
+            if(confirm("¿Eliminar?")) {
                 pedidos = pedidos.filter(p => p.id !== id);
                 localStorage.setItem('pedidos_maxi', JSON.stringify(pedidos));
                 renderAdmin();
@@ -252,21 +226,18 @@
         }
 
         function exportarExcel() {
-            if(pedidos.length === 0) return alert("No hay datos para exportar.");
+            if(pedidos.length === 0) return alert("Sin datos");
             const datosExcel = pedidos.map(p => ({
-                "Pedido No.": p.id,
-                "Fecha/Hora": p.fecha,
-                "Nombre Cliente": p.cliente,
-                "Celular": p.celular,
-                "Dirección Entrega": p.direccion,
-                "Productos": p.resumenItems,
-                "Observaciones": p.notas || "Sin notas",
-                "Total Venta": p.total
+                "Factura No.": p.id,
+                "Fecha": p.fecha,
+                "Cliente": p.cliente,
+                "Detalle Factura": p.detalleFactura,
+                "Total": p.total
             }));
             const ws = XLSX.utils.json_to_sheet(datosExcel);
             const wb = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(wb, ws, "Historial de Ventas");
-            XLSX.writeFile(wb, "Reporte_MaxiComidas.xlsx");
+            XLSX.utils.book_append_sheet(wb, ws, "Ventas");
+            XLSX.writeFile(wb, "Facturacion_Maxi.xlsx");
         }
 
         function crearBackup() {
