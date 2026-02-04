@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAXI COMIDAS - Facturación y Control</title>
+    <title>MAXI COMIDAS - Sistema Integral</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <style>
@@ -23,18 +23,55 @@
         </header>
 
         <main class="p-4 space-y-6 mt-4">
+            
             <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 flex flex-col card-shadow">
                 <img src="hamburguesa-sencilla.jpg" class="w-full h-64 object-cover">
                 <div class="p-5">
                     <h3 class="text-2xl font-black uppercase italic text-white italic">Sencilla</h3>
-                    <p class="text-sm text-gray-400 mt-1 italic leading-relaxed">Pan, carne artesanal, queso, tocineta, ripio de papa, ensalcada dulce, tomate, lechuga.</p>
+                    <p class="text-sm text-gray-400 mt-1 italic leading-relaxed text-justify">Pan, carne artesanal, queso, tocineta, ripio de papa, ensalcada dulce, tomate, lechuga.</p>
                     <div class="flex justify-between items-center mt-4">
                         <span class="text-yellow-500 font-black text-2xl">$16.000</span>
                         <input type="number" min="0" value="0" class="cantidad w-20 bg-zinc-800 border-2 border-yellow-500 rounded-xl p-2 text-center font-bold text-white text-lg" data-nombre="Sencilla" data-precio="16000">
                     </div>
                 </div>
             </div>
-            </main>
+
+            <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 flex flex-col card-shadow">
+                <img src="arepa-burger.jpg" class="w-full h-64 object-cover">
+                <div class="p-5">
+                    <h3 class="text-2xl font-black uppercase italic text-white italic">Arepa Burger</h3>
+                    <p class="text-sm text-gray-400 mt-1 italic leading-relaxed text-justify">Arepa, carne artesanal, queso, tocineta, ripio de papa, ensalnada dulce, tomate lechuga.</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-yellow-500 font-black text-2xl">$16.000</span>
+                        <input type="number" min="0" value="0" class="cantidad w-20 bg-zinc-800 border-2 border-yellow-500 rounded-xl p-2 text-center font-bold text-white text-lg" data-nombre="Arepa Burger" data-precio="16000">
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 flex flex-col card-shadow">
+                <img src="hamburguesa-especial.jpg" class="w-full h-64 object-cover">
+                <div class="p-5">
+                    <h3 class="text-2xl font-black uppercase italic text-white italic">Especial</h3>
+                    <p class="text-sm text-gray-400 mt-1 italic leading-relaxed text-justify">Pan, carne artesanal, doble queso, doble tocineta, ensalada dulce, papas a la francesa o criollas.</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-yellow-500 font-black text-2xl">$22.000</span>
+                        <input type="number" min="0" value="0" class="cantidad w-20 bg-zinc-800 border-2 border-yellow-500 rounded-xl p-2 text-center font-bold text-white text-lg" data-nombre="Especial" data-precio="22000">
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 flex flex-col card-shadow">
+                <img src="hamburguesa-doble.jpg" class="w-full h-64 object-cover">
+                <div class="p-5">
+                    <h3 class="text-2xl font-black uppercase italic text-white italic">Doble Carne</h3>
+                    <p class="text-sm text-gray-400 mt-1 italic leading-relaxed text-justify">Pan, doble carne artesanal, doble queso, doble tocineta, ripio de papas, ensalada dulce, tomate, lechuga, papas francesas o criollas.</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-yellow-500 font-black text-2xl">$27.000</span>
+                        <input type="number" min="0" value="0" class="cantidad w-20 bg-zinc-800 border-2 border-yellow-500 rounded-xl p-2 text-center font-bold text-white text-lg" data-nombre="Doble Carne" data-precio="27000">
+                    </div>
+                </div>
+            </div>
+        </main>
 
         <section class="p-6 bg-maxi-yellow m-4 rounded-[2.5rem] text-black shadow-xl">
             <h2 class="font-black text-2xl mb-4 uppercase italic text-center italic">Tus Datos</h2>
@@ -52,7 +89,8 @@
 
     <div id="resumenModal" class="fixed inset-0 bg-black/95 z-50 hidden flex items-center justify-center p-4">
         <div class="bg-zinc-900 w-full max-w-sm rounded-[2.5rem] p-8 border-2 border-yellow-500 shadow-2xl text-center">
-            <h2 class="text-yellow-500 font-black text-2xl uppercase italic mb-4">Detalle de Factura</h2>
+            <h2 class="text-yellow-500 font-black text-2xl uppercase italic mb-2">Detalle de Factura</h2>
+            <p id="numPedidoVisual" class="text-white font-black text-sm mb-4 bg-zinc-800 inline-block px-3 py-1 rounded-full border border-yellow-500 italic"></p>
             <div id="resumenContenido" class="text-white text-left text-sm space-y-2 mb-6 border-y border-zinc-800 py-4 max-h-60 overflow-y-auto"></div>
             <div class="flex flex-col gap-3">
                 <button onclick="confirmarYEnviar()" class="bg-green-600 text-white font-black p-5 rounded-2xl shadow-lg uppercase italic">✅ Confirmar Pedido</button>
@@ -87,13 +125,13 @@
         <button onclick="location.reload()" class="flex flex-col items-center text-black">
             <span class="text-3xl">🏠</span><span class="text-[10px] font-black uppercase">MENÚ</span>
         </button>
-        <button onclick="abrirAdmin()" class="flex flex-col items-center text-zinc-400">
+        <button onclick="abrirAdmin()" class="flex flex-col items-center text-zinc-400 transition">
             <span class="text-3xl">⚙️</span><span class="text-[10px] font-black uppercase italic">ADMIN</span>
         </button>
     </nav>
 
     <script>
-        // CONFIGURACIÓN DE SUSCRIPCIÓN (Se controla desde GitHub)
+        // CONFIGURACIÓN CENTRAL (EDICIÒN EN GITHUB)
         const FECHA_VENCIMIENTO = "2026-03-01"; 
         const TU_WHATSAPP = "573117700431";
 
@@ -101,14 +139,9 @@
             const ahora = new Date();
             const venc = new Date(FECHA_VENCIMIENTO);
             const diff = venc - ahora;
-
-            // Reloj en el panel maestro
             if(document.getElementById('relojAdmin')) document.getElementById('relojAdmin').innerText = ahora.toLocaleTimeString();
-            
-            if (diff <= 0) {
-                if(document.getElementById('cuentaRegresivaAdmin')) document.getElementById('cuentaRegresivaAdmin').innerText = "VENCIDO";
-                bloquearApp();
-            } else {
+            if (diff <= 0) { bloquearApp(); } 
+            else {
                 const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
                 const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 if(document.getElementById('cuentaRegresivaAdmin')) document.getElementById('cuentaRegresivaAdmin').innerText = `${dias}d ${horas}h Restantes`;
@@ -150,27 +183,30 @@
             const numSiguiente = pedidos.length + 1;
             pedidoTemp = { id: numSiguiente, cliente, celular: document.getElementById('celular').value, direccion, notas: document.getElementById('notas').value, items, total };
 
+            document.getElementById('numPedidoVisual').innerText = `FACTURA #${numSiguiente}`;
             document.getElementById('resumenContenido').innerHTML = `
                 <div class="mb-4 border-b border-zinc-800 pb-2">
-                    <p class="font-bold text-yellow-500 uppercase">Cliente: ${cliente}</p>
+                    <p class="font-bold text-yellow-500 uppercase italic">Cliente: ${cliente}</p>
                     <p class="text-gray-400 italic">Factura #${numSiguiente}</p>
                 </div>
-                ${items.map(i => `<p class="flex justify-between text-xs text-white"><span>${i.nombre} x${i.cant}</span> <span class="font-black">$${i.sub.toLocaleString()}</span></p>`).join('')}
+                ${items.map(i => `<p class="flex justify-between text-xs text-white italic"><span>${i.nombre} x${i.cant}</span> <span class="font-black">$${i.sub.toLocaleString()}</span></p>`).join('')}
                 <div class="mt-4 border-t border-yellow-500 pt-4 text-center">
-                    <p class="font-black text-xl text-yellow-500 uppercase italic">Total: $${total.toLocaleString()}</p>
+                    <p class="font-black text-xl text-yellow-500 uppercase italic italic">Total: $${total.toLocaleString()}</p>
                 </div>`;
             document.getElementById('resumenModal').classList.remove('hidden');
         }
 
         function confirmarYEnviar() {
-            const registro = { ...pedidoTemp, fecha: new Date().toLocaleString(), detalleFactura: pedidoTemp.items.map(i => `${i.nombre} (${i.cant}x$${i.precio})`).join(', ') };
+            const registro = { ...pedidoTemp, fecha: new Date().toLocaleString(), detalleFactura: pedidoTemp.items.map(i => `${i.nombre} (${i.cant}x$${i.precio.toLocaleString()}) = $${i.sub.toLocaleString()}`).join(', ') };
             pedidos.push(registro);
             localStorage.setItem('pedidos_maxi', JSON.stringify(pedidos));
 
-            const textoWA = encodeURIComponent(`🍔 *MAXI COMIDAS - FACTURA #${pedidoTemp.id}* 🍔\n\n👤 *Cliente:* ${pedidoTemp.cliente}\n📍 *Dir:* ${pedidoTemp.direccion}\n----------------------------------\n${pedidoTemp.items.map(i => `✅ ${i.nombre} x${i.cant} = $${i.sub.toLocaleString()}`).join('\n')}\n----------------------------------\n💰 *TOTAL: $${pedidoTemp.total.toLocaleString()}*`);
+            const textoWA = encodeURIComponent(`🍔 *MAXI COMIDAS - FACTURA #${pedidoTemp.id}* 🍔\n\n👤 *Cliente:* ${pedidoTemp.cliente}\n📍 *Dir:* ${pedidoTemp.direccion}\n📱 *Tel:* ${pedidoTemp.celular}\n📝 *Notas:* ${pedidoTemp.notas || 'N/A'}\n----------------------------------\n${pedidoTemp.items.map(i => `✅ ${i.nombre} (${i.cant}x$${i.precio.toLocaleString()}) = *$${i.sub.toLocaleString()}*`).join('\n')}\n----------------------------------\n💰 *TOTAL: $${pedidoTemp.total.toLocaleString()}*`);
             window.open(`https://wa.me/${TU_WHATSAPP}?text=${textoWA}`, '_blank');
             location.reload();
         }
+
+        function cerrarResumen() { document.getElementById('resumenModal').classList.add('hidden'); }
 
         function abrirAdmin() {
             if(prompt("🔐 Clave Admin:") === "2026") {
@@ -185,17 +221,27 @@
                 <div class="bg-zinc-800 p-4 rounded-2xl border-l-4 border-yellow-500 text-[10px] mb-2 relative">
                     <p class="font-black text-yellow-500 uppercase italic">#${p.id} - ${p.fecha}</p>
                     <p class="text-white text-base font-black uppercase italic">${p.cliente}</p>
-                    <p class="text-gray-400 italic border-t border-zinc-700 mt-1 pt-1">${p.detalleFactura}</p>
-                    <p class="text-green-500 font-black text-sm mt-1">TOTAL: $${p.total.toLocaleString()}</p>
+                    <div class="text-gray-400 mt-1 whitespace-pre-line border-t border-zinc-700 pt-1">${p.detalleFactura}</div>
+                    <p class="text-green-500 font-black text-lg mt-2 italic">TOTAL: $${p.total.toLocaleString()}</p>
                     <button onclick="borrarPedido(${p.id})" class="absolute top-4 right-4 text-red-600 font-bold uppercase text-[8px]">Borrar</button>
                 </div>`).join('');
         }
 
         function exportarExcel() {
-            const ws = XLSX.utils.json_to_sheet(pedidos);
+            if(pedidos.length === 0) return alert("Sin datos");
+            const datosExcel = pedidos.map(p => ({
+                "Factura No.": p.id,
+                "Fecha": p.fecha,
+                "Cliente": p.cliente,
+                "Teléfono": p.celular,
+                "Dirección": p.direccion,
+                "Detalle": p.detalleFactura,
+                "Total": p.total
+            }));
+            const ws = XLSX.utils.json_to_sheet(datosExcel);
             const wb = XLSX.utils.book_new();
             XLSX.utils.book_append_sheet(wb, ws, "Ventas");
-            XLSX.writeFile(wb, "Ventas_MaxiComidas.xlsx");
+            XLSX.writeFile(wb, "Historial_MaxiComidas.xlsx");
         }
 
         function crearBackup() {
@@ -206,7 +252,6 @@
             dlAnchor.click();
         }
 
-        // FUNCIÓN NUEVA PARA RECUPERAR COPIA
         function recuperarBackup(event) {
             const reader = new FileReader();
             reader.onload = function(e) {
@@ -218,15 +263,13 @@
                         alert("✅ Historial recuperado con éxito.");
                         renderAdmin();
                     }
-                } catch (err) {
-                    alert("❌ Archivo de copia inválido.");
-                }
+                } catch (err) { alert("❌ Archivo inválido."); }
             };
             reader.readAsText(event.target.files[0]);
         }
 
         function borrarPedido(id) {
-            if(confirm("¿Eliminar registro?")) {
+            if(confirm("¿Eliminar?")) {
                 pedidos = pedidos.filter(p => p.id !== id);
                 localStorage.setItem('pedidos_maxi', JSON.stringify(pedidos));
                 renderAdmin();
