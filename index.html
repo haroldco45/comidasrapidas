@@ -3,27 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAXI COMIDAS - Sistema Integral</title>
+    <title>MAXI COMIDAS - Facturación y Control</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap');
-        body { font-family: 'Poppins', sans-serif; }
+        body { font-family: 'Poppins', sans-serif; background-color: #0a0a0a; }
         .bg-maxi-yellow { background-color: #FFCC00; }
         .card-shadow { box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5); }
     </style>
 </head>
-<body class="bg-zinc-950 text-gray-100 pb-24">
+<body class="text-gray-100 pb-24">
 
     <div id="appContent">
         <header class="bg-white p-6 text-center shadow-2xl rounded-b-[3rem] border-b-8 border-yellow-500">
             <img src="logo-maxi.png" alt="MAXI COMIDAS" class="w-32 h-32 mx-auto mb-2 rounded-full border-2 border-black object-cover">
-            <h1 class="text-4xl font-black text-black italic uppercase">MAXI COMIDAS</h1>
+            <h1 class="text-4xl font-black text-black italic uppercase italic">MAXI COMIDAS</h1>
             <p class="text-xs font-bold text-gray-500 uppercase italic">📍 Pedidos: 3205901068</p>
         </header>
 
         <main class="p-4 space-y-6 mt-4">
-            
             <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 flex flex-col card-shadow">
                 <img src="hamburguesa-sencilla.jpg" class="w-full h-64 object-cover">
                 <div class="p-5">
@@ -107,16 +106,14 @@
                 <p id="cuentaRegresivaAdmin" class="text-[10px] font-black text-red-500 uppercase italic">Calculando...</p>
             </div>
         </div>
-
-        <div class="grid grid-cols-2 gap-2 mb-6 text-white font-black text-[10px] uppercase">
+        <div class="grid grid-cols-2 gap-2 mb-6 text-white font-black text-[10px] uppercase italic">
             <button onclick="exportarExcel()" class="bg-blue-600 p-3 rounded-xl shadow-lg">📥 Reporte Excel</button>
             <button onclick="crearBackup()" class="bg-purple-700 p-3 rounded-xl shadow-lg">💾 Guardar Copia</button>
-            <label class="bg-orange-600 p-3 rounded-xl shadow-lg flex items-center justify-center cursor-pointer text-center">
-                📂 Recuperar Copia
+            <label class="bg-orange-600 p-3 rounded-xl shadow-lg flex items-center justify-center cursor-pointer text-center col-span-2">
+                📂 Recuperar Copia Historial
                 <input type="file" id="importarBackup" class="hidden" onchange="recuperarBackup(event)">
             </label>
         </div>
-
         <h3 class="text-yellow-500 font-black uppercase text-xs mb-3 italic">Historial de Ventas</h3>
         <div id="listaPedidos" class="space-y-3 max-h-80 overflow-y-auto"></div>
     </section>
@@ -125,13 +122,12 @@
         <button onclick="location.reload()" class="flex flex-col items-center text-black">
             <span class="text-3xl">🏠</span><span class="text-[10px] font-black uppercase">MENÚ</span>
         </button>
-        <button onclick="abrirAdmin()" class="flex flex-col items-center text-zinc-400 transition">
+        <button onclick="abrirAdmin()" class="flex flex-col items-center text-zinc-400">
             <span class="text-3xl">⚙️</span><span class="text-[10px] font-black uppercase italic">ADMIN</span>
         </button>
     </nav>
 
     <script>
-        // CONFIGURACIÓN CENTRAL (EDICIÒN EN GITHUB)
         const FECHA_VENCIMIENTO = "2026-03-01"; 
         const TU_WHATSAPP = "573117700431";
 
@@ -150,15 +146,9 @@
         setInterval(verificarVencimiento, 1000);
 
         function bloquearApp() {
-            document.body.innerHTML = `
-                <div style="height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #000; color: #fff; text-align: center; padding: 20px; font-family: sans-serif;">
-                    <h1 style="color: #FFCC00; font-size: 2.5rem; font-weight: 900; font-style: italic;">SERVICIO SUSPENDIDO</h1>
-                    <p style="margin: 15px 0;">La suscripción mensual ha vencido.</p>
-                    <a href="https://wa.me/${TU_WHATSAPP}?text=Renovar suscripción Maxi" style="background: #25D366; color: white; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; margin-top: 25px;">PAGAR MENSUALIDAD 🚀</a>
-                </div>`;
+            document.body.innerHTML = `<div style="height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #000; color: #fff; text-align: center; padding: 20px; font-family: sans-serif;"><h1 style="color: #FFCC00; font-size: 2.5rem; font-weight: 900; font-style: italic;">SERVICIO SUSPENDIDO</h1><p style="margin: 15px 0;">La suscripción mensual ha vencido.</p><a href="https://wa.me/${TU_WHATSAPP}?text=Renovar suscripción Maxi" style="background: #25D366; color: white; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; margin-top: 25px;">PAGAR MENSUALIDAD 🚀</a></div>`;
         }
 
-        // LÓGICA DE PEDIDOS
         let pedidos = JSON.parse(localStorage.getItem('pedidos_maxi')) || [];
         let pedidoTemp = null;
 
@@ -186,27 +176,22 @@
             document.getElementById('numPedidoVisual').innerText = `FACTURA #${numSiguiente}`;
             document.getElementById('resumenContenido').innerHTML = `
                 <div class="mb-4 border-b border-zinc-800 pb-2">
-                    <p class="font-bold text-yellow-500 uppercase italic">Cliente: ${cliente}</p>
-                    <p class="text-gray-400 italic">Factura #${numSiguiente}</p>
+                    <p class="font-bold text-yellow-500 uppercase italic italic">Cliente: ${cliente}</p>
                 </div>
-                ${items.map(i => `<p class="flex justify-between text-xs text-white italic"><span>${i.nombre} x${i.cant}</span> <span class="font-black">$${i.sub.toLocaleString()}</span></p>`).join('')}
-                <div class="mt-4 border-t border-yellow-500 pt-4 text-center">
-                    <p class="font-black text-xl text-yellow-500 uppercase italic italic">Total: $${total.toLocaleString()}</p>
-                </div>`;
+                ${items.map(i => `<p class="flex justify-between text-xs italic italic"><span>${i.nombre} (${i.cant}x$${i.precio.toLocaleString()})</span> <span>$${i.sub.toLocaleString()}</span></p>`).join('')}
+                <div class="mt-4 border-t border-yellow-500 pt-4 text-center italic italic font-black text-xl text-yellow-500 uppercase">Total: $${total.toLocaleString()}</div>`;
             document.getElementById('resumenModal').classList.remove('hidden');
         }
 
         function confirmarYEnviar() {
-            const registro = { ...pedidoTemp, fecha: new Date().toLocaleString(), detalleFactura: pedidoTemp.items.map(i => `${i.nombre} (${i.cant}x$${i.precio.toLocaleString()}) = $${i.sub.toLocaleString()}`).join(', ') };
+            const registro = { ...pedidoTemp, fecha: new Date().toLocaleString(), detalleFactura: pedidoTemp.items.map(i => `${i.nombre} (${i.cant}x$${i.precio.toLocaleString()}) = $${i.sub.toLocaleString()}`).join('\n') };
             pedidos.push(registro);
             localStorage.setItem('pedidos_maxi', JSON.stringify(pedidos));
 
-            const textoWA = encodeURIComponent(`🍔 *MAXI COMIDAS - FACTURA #${pedidoTemp.id}* 🍔\n\n👤 *Cliente:* ${pedidoTemp.cliente}\n📍 *Dir:* ${pedidoTemp.direccion}\n📱 *Tel:* ${pedidoTemp.celular}\n📝 *Notas:* ${pedidoTemp.notas || 'N/A'}\n----------------------------------\n${pedidoTemp.items.map(i => `✅ ${i.nombre} (${i.cant}x$${i.precio.toLocaleString()}) = *$${i.sub.toLocaleString()}*`).join('\n')}\n----------------------------------\n💰 *TOTAL: $${pedidoTemp.total.toLocaleString()}*`);
+            const textoWA = encodeURIComponent(`🍔 *MAXI COMIDAS - FACTURA #${pedidoTemp.id}* 🍔\n\n👤 *Cliente:* ${pedidoTemp.cliente}\n📍 *Dir:* ${pedidoTemp.direccion}\n----------------------------------\n${pedidoTemp.items.map(i => `✅ ${i.nombre} (${i.cant}x$${i.precio.toLocaleString()}) = *$${i.sub.toLocaleString()}*`).join('\n')}\n----------------------------------\n💰 *TOTAL: $${pedidoTemp.total.toLocaleString()}*`);
             window.open(`https://wa.me/${TU_WHATSAPP}?text=${textoWA}`, '_blank');
             location.reload();
         }
-
-        function cerrarResumen() { document.getElementById('resumenModal').classList.add('hidden'); }
 
         function abrirAdmin() {
             if(prompt("🔐 Clave Admin:") === "2026") {
@@ -218,25 +203,18 @@
         function renderAdmin() {
             const lista = document.getElementById('listaPedidos');
             lista.innerHTML = pedidos.slice().reverse().map(p => `
-                <div class="bg-zinc-800 p-4 rounded-2xl border-l-4 border-yellow-500 text-[10px] mb-2 relative">
-                    <p class="font-black text-yellow-500 uppercase italic">#${p.id} - ${p.fecha}</p>
+                <div class="bg-zinc-800 p-4 rounded-2xl border-l-4 border-yellow-500 text-[10px] mb-2 relative italic italic">
+                    <p class="font-black text-yellow-500 uppercase tracking-tighter italic">#${p.id} - ${p.fecha}</p>
                     <p class="text-white text-base font-black uppercase italic">${p.cliente}</p>
-                    <div class="text-gray-400 mt-1 whitespace-pre-line border-t border-zinc-700 pt-1">${p.detalleFactura}</div>
-                    <p class="text-green-500 font-black text-lg mt-2 italic">TOTAL: $${p.total.toLocaleString()}</p>
+                    <div class="text-gray-400 mt-1 whitespace-pre-line border-t border-zinc-700 pt-1">${p.detalleFactura || "Sin detalle"}</div>
+                    <p class="text-green-500 font-black text-lg mt-2 italic italic border-t border-zinc-700 pt-1">TOTAL: $${p.total.toLocaleString()}</p>
                     <button onclick="borrarPedido(${p.id})" class="absolute top-4 right-4 text-red-600 font-bold uppercase text-[8px]">Borrar</button>
                 </div>`).join('');
         }
 
         function exportarExcel() {
-            if(pedidos.length === 0) return alert("Sin datos");
             const datosExcel = pedidos.map(p => ({
-                "Factura No.": p.id,
-                "Fecha": p.fecha,
-                "Cliente": p.cliente,
-                "Teléfono": p.celular,
-                "Dirección": p.direccion,
-                "Detalle": p.detalleFactura,
-                "Total": p.total
+                "No.": p.id, "Fecha": p.fecha, "Cliente": p.cliente, "Tel": p.celular, "Dir": p.direccion, "Detalle": p.detalleFactura, "Total": p.total
             }));
             const ws = XLSX.utils.json_to_sheet(datosExcel);
             const wb = XLSX.utils.book_new();
